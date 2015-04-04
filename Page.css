@@ -1,0 +1,27 @@
+/* 7.5in x 5in paper measurements */
+/* or 540pt x 360pt*/
+@page {
+    size:5in 7.5in;
+}
+
+@page :left {
+    margin-left: 10pt;
+    margin-right: 32pt;
+}
+
+@page :right {
+    margin-left: 32pt;
+    margin-right: 10pt;
+}
+
+/* These don't work. Try again when CSS3 print media
+ * is fully implemented (or use WeasyPrint or something).
+ */
+/*@page {
+    @bottom-center {
+    content: "hello";
+    }
+}*/
+/*@page :footer {
+    content: "hello";
+}*/

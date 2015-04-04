@@ -1,0 +1,131 @@
+*:lang(ja) {
+  font-family:"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+
+/* Needs to start on the left page, so just don't print the first page.*/
+.entries {
+    page-break-before: left;
+}
+
+h3 {
+    font-family: Futura, "Century Gothic", AppleGothic, sans-serif;
+    font-weight: bold;
+}
+
+.day-of-week {
+    font-family: Futura, "Century Gothic", AppleGothic, sans-serif;
+}
+
+.date {
+    font-family: 'Hoefler Text', Times New Roman, Times, serif;
+    font-style: italic;
+}
+
+.holiday {
+    font-family: Futura, "Century Gothic", AppleGothic, sans-serif;
+    float: right;
+}
+
+.emoji {
+    /* Symbola font available at http://users.teilar.gr/~g1951d/ */
+    /* Style taken from emojibase.com */
+    font-family: "Apple Color Emoji","Segoe UI Emoji","NotoColorEmoji","Segoe UI Symbol","Android Emoji","EmojiSymbols", "Symbola";
+}
+
+.day-header {
+    -webkit-margin-before: 0;
+    margin-top: .2em;
+    margin-bottom: 0em;
+}
+
+.day {
+    width: 100%;
+    position: relative;
+    border-bottom: 2px solid navy;
+}
+
+/* Extra line at tops of pages */
+div[data-week-day="MONDAY"], div[data-week-day="THURSDAY"] {
+    border-top: 2px solid navy;
+}
+
+.weekday {
+    height: 195px;
+}
+
+.weekend {
+    height: 100px;
+}
+
+/* Lines for writing on*/
+.lines {
+    /* Fill available space below header */
+    display: block;
+    position:absolute;
+    height:auto;
+    bottom:0;
+    top:20px; /* A little more than line height */
+    left:0;
+    right:0;
+
+    background-image: url('Line.png');
+        /* Doesn't work in Chrome printing */
+        /*linear-gradient(#000 .1em, transparent .1em);*/
+        /* So Webkit user can't turn off the lines*/
+        /*-webkit-print-color-adjust:exact;*/
+    box-sizing: border-box;
+}
+
+/* Adjust background size so that the correct number of lines shows up */
+.weekday .lines {
+    background-size: 100% 1em;
+}
+
+.weekend .lines {
+    background-size: 100% 1.1em;
+}
+
+.goal-star {
+    height: 10pt;
+    float: right;
+    /* Add some white padding on the left */
+    background-color: white;
+    padding-left: 1pt;
+}
+
+@media print {
+    .weekday {
+        height: 138pt;
+    }
+
+    .weekend {
+        height: 69pt;
+    }
+    .week-header {
+        font-size: x-small;
+        font-weight: bold;
+    }
+    .day-header {
+        font-size: x-small;
+        font-weight: normal;
+    }
+    .holiday {
+        font-size: 4.5pt; /*xxx-small doesn't exist*/
+    }
+
+    div[data-week-day="WEDNESDAY"] {
+        page-break-after: right;
+    }
+
+    div[data-week-day="SUNDAY"] {
+        page-break-after: left;
+    }
+
+    /* Thursday is the top of the right page, which has no header, so add
+     * space to make it match the left page.
+     */
+    div[data-week-day="THURSDAY"] {
+        margin-top: 2em;
+    }
+}
+

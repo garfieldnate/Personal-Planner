@@ -1,0 +1,72 @@
+<!doctype html>
+<head>
+<link rel="stylesheet" href="Page.css">
+<style type="text/css">
+    body {
+        font-family: Futura, "Century Gothic", AppleGothic, sans-serif;
+    }
+    *:lang(ja) {
+      font-family:"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+    }
+
+    .year,.title {
+        font-weight: bold;
+        font-style: italic;
+        /* Unfortunately not on Chrome yet*/
+        /*text-shadow: 2px 2px 2px rgba(150, 150, 150, 1);*/
+    }
+    .year {
+        text-align: right;
+    }
+    .title {
+        text-align: center;
+    }
+    .toc ul {
+        font-size: 1.2em;
+        text-align: center;
+        padding: 0;
+        list-style-type: none;
+    }
+    .belongs-to {
+    }
+    .logo {
+        /* horizontal center */
+        width: 100%;
+        display: inline-block;
+        /* bottom of page */
+        position: fixed;
+        bottom: 0;
+    }
+    @media print {
+        .link {
+            font-family: "Courier New", Courier, monospace;
+            color: black;
+            text-decoration: none;
+        }
+        .logo {
+            /* Undo strange extra right margin */
+            left: 32pt;
+        }
+    }
+</style>
+</head>
+<body>
+    <h1 class="year">2015</h1>
+    <h1 class="year">2016</h1>
+    <h2 class="title">Daily/Weekly Planner</h2>
+    <div class="toc">
+        <ul>
+            <li>Daily Planner Pages</li>
+            <li>Notes</li>
+            <li>Important Numbers</li>
+        </ul>
+    </div>
+    <div class="belongs-to">
+        <p>This planner belongs to Nathan Glenn. If you find it, please contact me at nathan.g.glenn@<wbr>gmail.com.</p>
+        <p lang="JA">このダイアリーが見つかりましたらご連絡願います：nathan.g.glenn@<wbr>gmail.com。</p>
+    </div>
+    <div class="make">
+        <p>This planner produced by Nathan Glenn in Perl, HTML and CSS. You can contribute at <a class="link" href="https://github.com/garfieldnate/p5-Planner-Generator">https://github.com/garfieldnate/Personal-Planner</a>.</p>
+    </div>
+    <img class="logo" src="MarioStar.svg" height="30px">
+</body>

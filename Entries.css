@@ -2,12 +2,7 @@
   font-family:"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
 }
 
-/* Needs to start on the left page, so just don't print the first page.*/
-.entries {
-    page-break-before: left;
-}
-
-h3 {
+.week-header {
     font-family: Futura, "Century Gothic", AppleGothic, sans-serif;
     font-weight: bold;
 }
@@ -50,13 +45,12 @@ div[data-week-day="MONDAY"], div[data-week-day="THURSDAY"] {
 }
 
 .weekday {
-    height: 195px;
+    height: 144pt;
 }
 
 .weekend {
-    height: 100px;
+    height: 72pt;
 }
-
 /* Lines for writing on*/
 .lines {
     /* Fill available space below header */
@@ -76,13 +70,16 @@ div[data-week-day="MONDAY"], div[data-week-day="THURSDAY"] {
     box-sizing: border-box;
 }
 
-/* Adjust background size so that the correct number of lines shows up */
+/* Adjust background size so that there are 10 even lines */
 .weekday .lines {
-    background-size: 100% 1em;
+    background-size: 100% 12pt;
+    background-position: 0% 8%;
 }
 
+/* Should have 4 even lines*/
 .weekend .lines {
-    background-size: 100% 1.1em;
+    background-size: 100% 12pt;
+    background-position: 0% 20%;
 }
 
 .goal-star {
@@ -94,13 +91,6 @@ div[data-week-day="MONDAY"], div[data-week-day="THURSDAY"] {
 }
 
 @media print {
-    .weekday {
-        height: 138pt;
-    }
-
-    .weekend {
-        height: 69pt;
-    }
     .week-header {
         font-size: x-small;
         font-weight: bold;
@@ -111,14 +101,6 @@ div[data-week-day="MONDAY"], div[data-week-day="THURSDAY"] {
     }
     .holiday {
         font-size: 4.5pt; /*xxx-small doesn't exist*/
-    }
-
-    div[data-week-day="WEDNESDAY"] {
-        page-break-after: right;
-    }
-
-    div[data-week-day="SUNDAY"] {
-        page-break-after: left;
     }
 
     /* Thursday is the top of the right page, which has no header, so add

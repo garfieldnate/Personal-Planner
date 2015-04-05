@@ -42,10 +42,18 @@ Copyright Nathan Glenn, released under the [MIT license](http://choosealicense.c
 * Use JavaScript to reduce size of Numbers.html
 * Use that Pet Force logo somewhere!
 * ? Add entry footers
+* ? Back page:
+    - ? Goals
+    - ? Calendar
+    - ? Blank for doodling?
+* ? Blank note pages (no lines or graphs)
 * Report various bugs found during the making of this project
     - patch Japanese Holiday module to get rid of warnings;
     - file request for Calendar::China to allow gregorian year with Chinese month/day
     - Chrome doesn't change start page to left for Arabic/Hebrew
+        + http://www.w3.org/TR/CSS21/page.html#page-selectors
     - Couldn't get @import CSS to work for page rules
     - Chrome's print emulation doesn't set page size, nor does it allow setting the rule to inches or points
     - FireFox totally ignores print styling?
+    - Viewport sizes are set to nothing in paged media
+    - page-break-after doesn't break after if there's a border

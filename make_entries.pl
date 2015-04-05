@@ -267,8 +267,9 @@ my $holidays_calendar = Date::Calendar->new({
 
 my $out = path('Entries.html')->openw_utf8;
 say $out '<!doctype html>';
+# say $out '<link rel="stylesheet" href="PageMargins.css">';
+say $out '<link rel="stylesheet" href="Page2.css">';
 say $out '<link rel="stylesheet" href="Entries.css">';
-say $out '<link rel="stylesheet" href="Page.css">';
 my $writer = XML::Writer->new(
     OUTPUT => $out,
     DATA_MODE => 1,
@@ -331,7 +332,9 @@ sub start_week {
         'data-start-date' => $start,
         'data-end-date' => $end
     );
-    # $writer->startTag('div', class => 'page page-left');
+
+    # first page contains Monday -- Wednesday
+    $writer->startTag('div', class => 'page left-page');
 
     $writer->startTag('div', class => 'week-header-container');
     $writer->startTag('h3', class => 'week-header');
@@ -344,6 +347,10 @@ sub start_week {
 sub write_day {
     my ($writer, $date, $day_of_week) = @_;
 
+    # second page contains Thursday -- Sunday
+    if($day_of_week == 4){
+        $writer->startTag('div', class => "page right-page");
+    }
     $writer->startTag('div',
         class => 'day ' . ($day_of_week < 6 ? 'weekday' : 'weekend'),
         'data-week-day' => $days_of_week[$date->day_of_week],
@@ -371,6 +378,11 @@ sub write_day {
     $writer->endTag('div');
 
     $writer->endTag('div'); # day
+
+    # end page div
+    if($day_of_week == 3 || $day_of_week == 7){
+        $writer->endTag('div');
+    }
 }
 
 sub write_holidays {

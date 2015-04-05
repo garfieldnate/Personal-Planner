@@ -1,6 +1,6 @@
 <!doctype html>
 <head>
-<link rel="stylesheet" href="Page.css">
+<link rel="stylesheet" href="Page2.css">
 <style type="text/css">
     body {
         font-family: Futura, "Century Gothic", AppleGothic, sans-serif;
@@ -9,33 +9,34 @@
       font-family:"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
     }
 
-    .year,.title {
+    /** {
+        border: 3px solid red;
+    }*/
+
+    #title-year {
+        margin-top: 0pt;
+        text-align: right;
         font-weight: bold;
         font-style: italic;
-        /* Unfortunately not on Chrome yet*/
+        /* Roaring Spring has text shadows for title and year,
+         * but that doesn't print with Chrome yet.*/
         /*text-shadow: 2px 2px 2px rgba(150, 150, 150, 1);*/
     }
-    .year {
-        text-align: right;
-    }
-    .title {
+    #title-title {
         text-align: center;
     }
-    .toc ul {
+    #title-toc ul {
         font-size: 1.2em;
         text-align: center;
         padding: 0;
         list-style-type: none;
     }
-    .belongs-to {
-    }
-    .logo {
-        /* horizontal center */
-        width: 100%;
-        display: inline-block;
-        /* bottom of page */
-        position: fixed;
-        bottom: 0;
+    #title-logo {
+        /* horizontal center (42pt is margin size) */
+        width: calc(100% - 42pt);
+        /* bottom of page; CSS has no way of considering padding in bottom placement, so you have to do manual placement */
+        position: absolute;
+        bottom: 32pt;
     }
     @media print {
         .link {
@@ -43,30 +44,32 @@
             color: black;
             text-decoration: none;
         }
-        .logo {
-            /* Undo strange extra right margin */
-            left: 32pt;
+        #title-logo {
+            /* Undo strange extra right margin caused by 'fixed' */
+            /*right: 0pt;*/
         }
     }
 </style>
 </head>
 <body>
-    <h1 class="year">2015</h1>
-    <h1 class="year">2016</h1>
-    <h2 class="title">Daily/Weekly Planner</h2>
-    <div class="toc">
+<div class="page right-page">
+    <h1 id="title-year">2015</h1>
+    <h1 id="title-year">2016</h1>
+    <h2 id="title-title">Daily/Weekly Planner</h2>
+    <div id="title-toc">
         <ul>
             <li>Daily Planner Pages</li>
             <li>Notes</li>
             <li>Important Numbers</li>
         </ul>
     </div>
-    <div class="belongs-to">
+    <div id="belongs-to">
         <p>This planner belongs to Nathan Glenn. If you find it, please contact me at nathan.g.glenn@<wbr>gmail.com.</p>
         <p lang="JA">このダイアリーが見つかりましたらご連絡願います：nathan.g.glenn@<wbr>gmail.com。</p>
     </div>
-    <div class="make">
-        <p>This planner produced by Nathan Glenn in Perl, HTML and CSS. You can contribute at <a class="link" href="https://github.com/garfieldnate/p5-Planner-Generator">https://github.com/garfieldnate/Personal-Planner</a>.</p>
+    <div id="make">
+        <p>This planner produced by Nathan Glenn via Perl, HTML and CSS. You can contribute at <a class="link" href="https://github.com/garfieldnate/Personal-Planner">https://github.com/garfieldnate/Personal-Planner</a>.</p>
     </div>
-    <img class="logo" src="MarioStar.svg" height="30px">
+    <img id="title-logo" src="MarioStar.svg" height="30px">
+</div>
 </body>

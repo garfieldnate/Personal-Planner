@@ -1,20 +1,15 @@
 <!doctype html>
 <head>
-<link rel="stylesheet" href="Page.css">
+<link rel="stylesheet" href="Page2.css">
 <style type="text/css">
-    @page {
-        margin: 0pt;
-    }
     body {
-        margin: 0pt;
         background-color: navy;
     }
     div.container
     {
         position: relative;
         width: 100%;
-        /* For whatever reason, 100% doesn't work right.*/
-        height: 7.01in;
+        height: 100%;
         overflow: hidden;
     }
     div.container div.align
@@ -25,11 +20,18 @@
         margin: 0 0 0 -5000pt;
         text-align: center;
     }
-    /*}*/
+    .cover-page {
+        padding-top: 12pt;
+        padding-bottom: 0pt;
+    }
 </style>
 </head>
 <body>
-<div class="container">
-    <div class="align"><img src="MarioStar.svg" width="800pt" /></div>
+<div class="page cover-page">
+    <div class="container">
+        <div class="align">
+            <img src="MarioStar.svg" width="800pt"/>
+        </div>
+    </div>
 </div>
 </body>

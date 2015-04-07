@@ -272,6 +272,7 @@ say $out '<link rel="stylesheet" href="CSS/Page.css">';
 # Specify Japanese and then emoji fonts so emoji overrides Japanese
 say $out '<link rel="stylesheet" href="CSS/JPFont.css">';
 say $out '<link rel="stylesheet" href="CSS/Entries.css">';
+say $out '<link rel="stylesheet" href="CSS/Notes.css">';
 my $writer = XML::Writer->new(
     OUTPUT => $out,
     DATA_MODE => 1,
@@ -311,8 +312,13 @@ while($date->day_of_week != 1){
 }
 
 $writer->startTag('div', class => 'entries');
-# print by the week until we have surpassed the end date
+my $week_counter = 0;
+my $term_length = 5;
+# print by the week until we have surpassed the end date;
+# print a term planning page every 5 weeks
 while ( $date < $end ) {
+    term_planner($writer, $date) if $week_counter % $term_length == 0;
+    $week_counter++;
     start_week($writer, $date);
     for(1..7){
         write_day($writer, $date, $_);
@@ -323,7 +329,24 @@ while ( $date < $end ) {
     # last;
 }
 $writer->endTag('div'); # entries
-$writer->end();
+$writer->end(); # end the entire document
+
+# for now, this is just two blank pages with a header. Maybe
+# next year I'll have some ideas on content or formatting.
+sub term_planner {
+    for(qw(left right)){
+        $writer->startTag('div',
+            class => 'page ' . $_ . '-page notes-page');
+        $writer->startTag('h1', class => 'notes-header');
+        $writer->characters('Term Goals');
+        $writer->endTag('h1');
+        $writer->startTag('div', class => 'notes plan-notes');
+        $writer->endTag('div');
+        $writer->endTag('div');
+    }
+
+    return;
+}
 
 sub start_week {
     my ($writer, $date) = @_;
@@ -385,6 +408,7 @@ sub write_day {
     if($day_of_week == 3 || $day_of_week == 7){
         $writer->endTag('div');
     }
+    return;
 }
 
 sub write_holidays {
@@ -488,7 +512,7 @@ sub get_jp_holidays {
 sub end_week {
     my ($writer) = @_;
 
-    # $writer->endTag('div'); # page-right
+    # $writer->endTag('div'); # right-page
     $writer->endTag('div'); # week
     return;
 }

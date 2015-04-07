@@ -3,6 +3,7 @@
 This planner is a remake of my favorite planner purchased from the BYU bookstore as a student: an academic year planner by 7.5 x 5 inch weekly/daily planner from Roaring Spring Paper Products. Features include:
 
 * Daily planning entries with 1 week visible at a time
+* 5-week term planning pages
 * Entries section can be regenerated for any time span
 * American/Japanese holidays and family birthdays marked, sometimes with emoji!
 * Lines for writing daily plans
@@ -34,7 +35,6 @@ After that, you just need to print these files to PDF via Chrome and then take t
 Copyright Nathan Glenn, released under the [MIT license](http://choosealicense.com/licenses/apache-2.0/).
 
 ## TODO
-* Monthly goal/planning pages?
 * Move holidays to a separate module to make them easier to change
 * ? Add entry footers
 * Report various bugs found during the making of this project

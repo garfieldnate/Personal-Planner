@@ -22,15 +22,20 @@
     background-size: 12pt;
 }
 
-.blank-notes {
+.blank-notes/*, .plan-notes*/ {
     background-color: white;
     background-size: 100%;
 }
+
+/*.plan-notes {
+    border: 1pt solid black;
+}*/
 
 .line-notes {
     background: url('../images/Line.png');
     background-size: 100% 1em;
 }
+
 
 .notes {
     /* Fill available space below header */

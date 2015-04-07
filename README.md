@@ -22,7 +22,7 @@ The planner is written in HTML/CSS with special print styles, intended to simply
 
 This will write the file `Entries.html`. You do not have to specify both of the dates; the default start date is January 1st of the current year, and the default end date is December 31st of the start year.
 
-Next, you should run `make_full_planner.pl` to combine all of the sections into one document. Lastly, you should edit the years in `BackCover.html`. 
+Next, you should run `make_full_planner.pl` to combine all of the sections into one document, `FullPlannerContents.html`. Lastly, you should edit the years in `BackCover.html`. 
 
 After that, you just need to print these files to PDF via Chrome and then take the files to a printer:
 
@@ -35,7 +35,6 @@ After that, you just need to print these files to PDF via Chrome and then take t
 Copyright Nathan Glenn, released under the [MIT license](http://choosealicense.com/licenses/apache-2.0/).
 
 ## TODO
-* Move holidays to a separate module to make them easier to change
 * ? Add entry footers
 * Report various bugs found during the making of this project
     - patch Japanese Holiday module to get rid of warnings;

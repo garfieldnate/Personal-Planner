@@ -18,11 +18,10 @@ use XML::Writer;
 use 5.010;
 use utf8;
 use Date::Simple ('ymd');
-use Date::Calendar;
-use Calendar;
-use Calendar::Japanese::Holiday;
-use Date::Easter;
 use Path::Tiny;
+
+use Lib '.';
+use Planner::Holidays;
 
 sub _date_from_arg {
     my ($date) = @_;
@@ -51,220 +50,7 @@ my $end = do {
     }
 };
 
-# Specify holidays to Date::Calendar, along with some other
-# processing info. Provide date, lang (if Japanese),
-# and emoji to display next to holiday name.
-# TODO: For now, Unicode doesn't support country flags
-# (and neither does Symbola).
-my %holiday_info = (
-    # New Years is handled by Japanese holidays
-    'MLK Day' => {
-        date => '3/Mon/Jan'
-        # TODO: an MLK emoji would be nice...
-    },
-
-    'Groundhog Day' => {
-        date => 'Feb2'
-        # TODO: no groundhog emoji...
-    },
-    'Valentine\'s Day' => {
-        date    => 'Feb14',
-        emoji   => "\x{2665}" # heart
-    },
-    'President\'s Day' => {
-        date    => '3/Mon/Feb',
-        # emoji   => "\x{1F1FA}\x{1F1F8}" # US flag
-    },
-
-    "雛祭り" => {
-        date    => 'Mar3', # but it differs by a bit by area
-        emoji   => "\x{1F38E}", # Japanese dolls
-        lang    => "JA"
-    },
-    'White Day' => {
-        date    => 'Mar14',
-        emoji   => "\x{2661}" # white heart
-    },
-    'St. Patrick\'s Day' => {
-        date    => 'Mar17',
-        emoji   => "\x{2618}" #shamrock. four-leaf clover (1F340) also available
-    },
-
-    'April Fool\'s Day' => {date => 'Apr1'},
-    # Easter is handled separately
-
-    'Mother\'s Day' => {
-        date    => '2/Sun/May',
-        # emoji   => "\x{1F395}" # TODO: boquet not availabe until Unicode 7 (and Symbola is ugly)
-    },
-    'Memorial Day' => {
-        date    => '5/Mon/May', # means LAST Monday
-        # emoji   => "\x{1F1FA}\x{1F1F8}" # US flag
-    },
-    'Wedding Anniversary' => {
-        date    => 'May25',
-        emoji   => "\x{1F48D}" # ring
-    },
-
-    'Flag Day' => {
-        date    => 'Jun14',
-        # emoji   => "\x{1F1FA}\x{1F1F8}" # US flag
-    },
-    'Father\'s Day' => {date => '3/Sun/Jun'},
-
-    'Independence Day' => {
-        date    => 'Jul4',
-        # emoji   => "\x{1F1FA}\x{1F1F8}" # US flag
-    },
-    '七夕' => {
-        date    => 'Jul7',
-        emoji   => "\x{1F38B}", # tanabata bamboo decoration
-        lang    => 'JA'
-    },
-    'Pioneer Day' => {
-        date    => 'Jul24',
-        # emoji => "\x{1f402}" # ox TODO: I want a covered wagon.
-    },
-    # the main Summer festival in Osaka
-    '天神祭' => {
-        date    => 'Jul25',
-        emoji   => "\x{1F387}", # sparkler; sky firework also available (1F386)
-        lang    => 'JA'
-    },
-
-    'お盆' => {
-        date    => 'Aug15',
-        emoji   => "\x{1F3EE}", #Izakaya lantern
-        lang    => "JA"
-    },
-
-    '十五夜' => {
-        date    => get_tsukimi(),
-        emoji   => "\x{1F391}", # moon viewing ceremony
-        lang    => "JA"
-    },
-    'Labor Day' => {
-        date    => '1/Mon/Sep',
-        # emoji   => "\x{1F1FA}\x{1F1F8}" # US flag
-    },
-    '9/11' => {
-        date    => 'Sep11',
-        # emoji   => "\x{1F1FA}\x{1F1F8}" # US flag
-    },
-    'Birthday' => {
-        date    => 'Sep28',
-        emoji   => "\x{1F382}" # birthday cake
-    },
-
-    'Columbus Day' => {
-        date => '2/Mon/Oct',
-        # emoji  TODO: I want an old ship. Palm (1F334) doesn't cut it.
-    },
-    'Halloween' => {
-        date    => 'Oct31',
-        emoji   => "\x{1F383}", # jack-o-lantern
-    },
-
-    'Veterans Day' => {
-        date => 'Nov11',
-        # emoji   => "\x{1F1FA}\x{1F1F8}" # US flag
-    },
-    'Thanksgiving' => {
-        date    => '4/Thu/Nov',
-        emoji   => "\x{1F357}" # foul leg. TODO: Turkey in future Unicode (x704)
-    },
-
-    'Pearl Harbor Day' => {
-        date    => 'Dec7',
-        # emoji   => "\x{1F1FA}\x{1F1F8}" # US flag
-    },
-    'Christmas Eve' => {
-        date    => 'Dec24',
-        emoji   => "\x{1F385}" # Santa
-    },
-    'Christmas' => {
-        date    => 'Dec25',
-        emoji   => "\x{1F384}" # Christmas tree
-    },
-    'New Years Eve' => {
-        date    => 'Dec31',
-        emoji   => "\x{1F38A}", # party popper
-    },
-    '大晦日' => {
-        date    => 'Dec31',
-        lang    => 'JA'
-    }
-);
-# Add birthdays, which have common characteristics
-{
-    my %birthdays = (
-        'Mom' =>    'Mar16',
-        'Dad' =>    'Sep13',
-        "Erika" =>  'Feb21',
-        'Karen' =>  'Oct29',
-        'Chelan' => 'Jul8',
-        'Marlon' => 'Mar22',
-        'Josh' =>   'Dec8',
-    );
-    for(keys %birthdays){
-        $holiday_info{"$_\'s Birthday"} =
-            {date => $birthdays{$_}, emoji => "\x{1F382}"}; # birthday cake emoji
-    }
-    $holiday_info{q(Erika's Birthday)}->{emoji} = "\x{1f43b}\x{1F382}"; # bear and cake
-}
-
-# fill in default holiday language
-$holiday_info{$_}->{lang} //= 'EN' for keys %holiday_info;
-
-# finally create the calendar object, which provides
-# parsing and querying of dates
-my $holidays_calendar = Date::Calendar->new({
-    map { $_ => $holiday_info{$_}->{date} } keys %holiday_info
-});
-
-# Japanese holiday dates are provided by Calendar::Japanese::Holiday,
-# but they still need emoji!
-%holiday_info = (
-    %holiday_info,
-    "元日"  => {
-        emoji => "\x{1F38D}" # kadomatsu TODO: want torii (26E9), when it's available
-    },
-    # not provided by Calendar::Japanese::Holiday, but it's three days so
-    # we can't specify the date here
-    "三が日"  => {
-        emoji => "\x{1F38D}" # kadomatsu
-    },
-    'こどもの日' => {
-        # emoji   => "\x{1F38F}" # koinobori (it's ugly in current font)
-    },
-    "海の日" => {
-        emoji => "\x{1F30A}" # wave; spiral shell (1F41A) also available
-    },
-    "山の日" => {
-        emoji => "\x{1F304}" # mountain sunrise; Mt. Fuji (1F5FB) also available
-    },
-    "みどりの日" => {
-        emoji => "\x{1F33F}" # herb; deciduous tree (1F333) also available
-    },
-    "建国記念の日" => {
-        emoji => "\x{1F3EF}" # Japanese castle
-    },
-    "憲法記念日" => {
-        # emoji => "\x{1F1EF}\x{1F1F5}" # JP flag
-    },
-    "秋分の日" => {
-        emoji => "\x{1F341}" # maple leaf; some font might be better with fallen leaf (1F342)
-    },
-    "春分の日" => {
-        emoji => "\x{1F331}" # seedling
-    },
-    "体育の日" => {
-        emoji => "\x{1F3BD}" # running shirt with sash
-    },
-    "成人の日" => {
-        emoji => "\x{1F458}" # kimono
-    }
-);
+my $holidays = Planner::Holidays->new($start->year .. $end->year);
 
 my $out = path('Entries.html')->openw_utf8;
 say $out '<!doctype html>';
@@ -414,20 +200,21 @@ sub write_day {
 sub write_holidays {
     my ($writer, $year, $month, $day) = @_;
 
-    my @en_holidays = get_en_holidays($year, $month, $day);
-    my @jp_holidays = get_jp_holidays($year, $month, $day);
+    my @en_holidays = $holidays->get_en_holidays($year, $month, $day);
+    my @jp_holidays = $holidays->get_jp_holidays($year, $month, $day);
 
     if(@en_holidays || @jp_holidays){
         $writer->startTag('span', class => 'holiday');
-    }else{
+    }else {
         return;
     }
 
     if(@jp_holidays){
         $writer->startTag('span', lang => 'ja');
         while(my ($i, $holiday) = each @jp_holidays){
-            $writer->characters($holiday);
-            write_emoji($writer, $holiday);
+            $writer->characters($holiday->{name});
+            write_emoji($writer, $holiday->{emoji})
+                if($holiday->{emoji});
             if($i != $#jp_holidays){
                 $writer->characters('、'); # separator
             }
@@ -439,8 +226,9 @@ sub write_holidays {
         $writer->characters('　'); # separator
     }
     while(my ($i, $holiday) = each @en_holidays){
-        $writer->characters($holiday);
-        write_emoji($writer, $holiday);
+        $writer->characters($holiday->{name});
+        write_emoji($writer, $holiday->{emoji})
+            if($holiday->{emoji});
         if($i != $#en_holidays){
             $writer->characters(', '); # separator
         }
@@ -450,63 +238,11 @@ sub write_holidays {
 }
 
 sub write_emoji {
-    my ($writer, $holiday) = @_;
-    if(exists $holiday_info{$holiday}->{emoji}){
+    my ($writer, $emoji) = @_;
         $writer->startTag('span', class => 'emoji');
-        $writer->characters("$holiday_info{$holiday}->{emoji} ");
+        $writer->characters("$emoji ");
         $writer->endTag('span');
-    }
     return;
-}
-
-sub get_en_holidays {
-    my ($year, $month, $day) = @_;
-    my @holidays;
-    # cache easter dates for each year if not done yet
-    state %easter;
-    if(!$easter{$year}){
-        $easter{$year} = join ',', easter($year);
-    }
-
-    # check for Easter and then check the calendar for other holidays
-    if($easter{$year} eq "$month,$day"){
-        push @holidays, 'Easter';
-    }
-    # labels always returns day of the week, as well as holidays
-    if ((my @temp = $holidays_calendar->labels($year, $month, $day)) > 1){
-        shift @temp;
-        for my $holiday(@temp){
-            if(!exists $holiday_info{$holiday}->{lang}){
-                print $holiday;
-            }
-            if(!($holiday_info{$holiday}->{lang} eq 'JA')){
-                push @holidays, $holiday;
-            }
-        }
-    }
-    return @holidays;
-}
-
-sub get_jp_holidays {
-    my ($year, $month, $day) = @_;
-
-    # 0 means we don't get substitute business holidays when the actual one is on a weekend
-    my @holidays = isHoliday($year, $month, $day, 0) || ();
-    # can't specify this on calendar because it's two days
-    if($month == 1 && ($day == 2 || $day == 3)){
-        push @holidays, '三が日';
-    }
-
-    # labels always returns day of the week, as well as holidays
-    if ((my @temp = $holidays_calendar->labels($year, $month, $day)) > 1){
-        shift @temp;
-        for my $holiday(@temp){
-            if($holiday_info{$holiday}->{lang} eq 'JA'){
-                push @holidays, $holiday;
-            }
-        }
-    }
-    return @holidays;
 }
 
 sub end_week {
@@ -515,19 +251,6 @@ sub end_week {
     # $writer->endTag('div'); # right-page
     $writer->endTag('div'); # week
     return;
-}
-
-# Moon viewing is on 8/15 of the old calendar
-sub get_tsukimi {
-    my ($year) = @_;
-    # start with any date near the middle of the year just to initialize
-    # the Chinese cycle/year correctly
-    my $temp_date = Calendar->new_from_Gregorian(7, 1, 2015);
-    $temp_date->convert_to_China();
-    #get tsukimi date from cycle and year found above, and date 8/15
-    my $tsukimi = Calendar->new_from_China(-cycle => $temp_date->cycle, -year => $temp_date->year, -month => 8, -day => 15);
-    $tsukimi->convert_to_Gregorian();
-    return $tsukimi->month . '/' . $tsukimi->day;
 }
 
 sub print_date {

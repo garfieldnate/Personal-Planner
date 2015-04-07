@@ -34,10 +34,8 @@ After that, you just need to print these files to PDF via Chrome and then take t
 Copyright Nathan Glenn, released under the [MIT license](http://choosealicense.com/licenses/apache-2.0/).
 
 ## TODO
-* cpanfile
 * Monthly goal/planning pages?
 * Move holidays to a separate module to make them easier to change
-* Use that Pet Force logo somewhere!
 * ? Add entry footers
 * Report various bugs found during the making of this project
     - patch Japanese Holiday module to get rid of warnings;

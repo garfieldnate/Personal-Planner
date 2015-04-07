@@ -210,6 +210,7 @@ my %holiday_info = (
         $holiday_info{"$_\'s Birthday"} =
             {date => $birthdays{$_}, emoji => "\x{1F382}"}; # birthday cake emoji
     }
+    $holiday_info{q(Erika's Birthday)}->{emoji} = "\x{1f43b}\x{1F382}"; # bear and cake
 }
 
 # fill in default holiday language

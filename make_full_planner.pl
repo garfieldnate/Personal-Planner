@@ -16,7 +16,7 @@ say $out <<'END';
 <link rel="stylesheet" href="Numbers.css">
 END
 
-for my $file (qw(Cover Title Entries Notes Numbers)){
+for my $file (qw(Cover Title Entries Notes Numbers Goals)){
     my $in = path("$file.html")->openr_utf8();
     my $line;
     # skip header stuff used for stand-alone dev for each file

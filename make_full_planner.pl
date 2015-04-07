@@ -3,7 +3,7 @@ use warnings;
 use 5.010;
 use Path::Tiny;
 
-my $out = path('FullPlanner.html')->openw_utf8();
+my $out = path('FullPlannerContents.html')->openw_utf8();
 
 say $out <<'END';
 <!doctype html>

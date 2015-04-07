@@ -26,7 +26,7 @@ Next, you should run `make_full_planner.pl` to combine all of the sections into 
 After that, you just need to print these files to PDF via Chrome and then take the files to a printer:
 
 * FrontCover.html
-* FullPlanner.html
+* FullPlannerContents.html
 * BackCover.html
 
 ## License

@@ -9,6 +9,7 @@ This planner is a remake of my favorite planner purchased from the BYU bookstore
 * A star to fill in or put a sticker on for use with daily goals or habit building
 * Blank, graph and line note sections in the back
 * A year goals page in the back
+* Shnazzy front and back covers (no barcodes or recycled signs)
 
 I never used calendars, and I don't need to keep track of class schedules, so I didn't bother adding those pages.
 
@@ -20,13 +21,20 @@ The planner is written in HTML/CSS with special print styles, intended to simply
 
 This will write the file `Entries.html`. You do not have to specify both of the dates; the default start date is January 1st of the current year, and the default end date is December 31st of the start year.
 
-Next, you should run `make_full_planner.pl` to combine all of the sections into one document. After that, you just need to print it using Chrome!
+Next, you should run `make_full_planner.pl` to combine all of the sections into one document. Lastly, you should edit the years in `BackCover.html`. 
+
+After that, you just need to print these files to PDF via Chrome and then take the files to a printer:
+
+* FrontCover.html
+* FullPlanner.html
+* BackCover.html
 
 ## License
 
 Copyright Nathan Glenn, released under the [MIT license](http://choosealicense.com/licenses/apache-2.0/).
 
 ## TODO
+* cpanfile
 * Monthly goal/planning pages?
 * Move holidays to a separate module to make them easier to change
 * Use that Pet Force logo somewhere!

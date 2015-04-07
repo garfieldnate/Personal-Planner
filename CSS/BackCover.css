@@ -1,0 +1,15 @@
+.back-cover {
+    font-family: Futura, "Century Gothic", AppleGothic, sans-serif;
+    font-style: italic;
+    /* Don't use margins here; they're not nice for a cover */
+    padding-left: 0pt;
+    padding-right: 0pt;
+}
+
+.bottom-center {
+    text-align: center;
+    width: 100%;
+    /* bottom of page; CSS has no way of considering padding in bottom placement, so you have to do manual placement */
+    position: absolute;
+    bottom: 32pt;
+}

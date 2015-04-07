@@ -1,32 +1,43 @@
-/* TODO: how to put header on outside of page (different for left/right)?*/
+/* Reduce top padding */
+.notes-page {
+    padding-top: 8pt;
+}
 
-    body {
-        margin: 0pt;
-    }
-    .header {
-        font-family: 'Hoefler Text', Times New Roman, Times, serif;
-        font-weight: normal;
-        font-style: italic;
-        margin: 0px;
-        font-size: 13.5pt;
-    }
-    .container {
-        width: 100%;
-        height: 440pt;
-        position: relative;
-        page-break-after: always;
-    }
-    .notes {
-        /* Fill available space below header */
-        position:absolute;
-        height: 100%;
-        width:100%;
-        top:37px;
-        bottom:0;
-        left:0;
-        right:0;
-    }
+.notes-header {
+    font-family: 'Hoefler Text', Times New Roman, Times, serif;
+    font-weight: normal;
+    font-style: italic;
+    margin-top: 0px;
+    font-size: 13.5pt;
+}
+.left-page .notes-header {
+    text-align: left;
+}
+.right-page .notes-header {
+    text-align: right;
+}
 
-    @page {
-        margin-top: 8pt;
-    }
+.graph-notes {
+    background: url('Graph.png');
+    background-size: 12pt;
+}
+
+.blank-notes {
+    background-color: white;
+    background-size: 100%;
+}
+
+.line-notes {
+    background: url('Line.png');
+    background-size: 100% 1em;
+}
+
+.notes {
+    /* Fill available space below header */
+    position: relative;
+    /* For whatever reason, 100% respects side page padding
+     * but not vertical. So just subtract page padding here.*/
+    height: calc(100% - 32pt);
+    width:100%;
+    margin: 0pt;
+}

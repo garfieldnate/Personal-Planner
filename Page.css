@@ -1,27 +1,46 @@
-/* 7.5in x 5in paper measurements */
-/* or 540pt x 360pt*/
+/* Native CSS page layout doesn't work so great yet, so this is a custom one.
+ * A div of the "page" class will ocupy one printed page with no margin or
+ * padding. Page margins are set to 0.
+ */
 @page {
     size:5in 7.5in;
+    margin: 0pt;
 }
 
-@page :left {
-    margin-left: 10pt;
-    margin-right: 32pt;
+body {
+    margin: 0pt;
 }
 
-@page :right {
-    margin-left: 32pt;
-    margin-right: 10pt;
+.page {
+    /*margin: 0pt;*/
+    width: 100%;
+    height: 100vh;
 }
 
-/* These don't work. Try again when CSS3 print media
- * is fully implemented (or use WeasyPrint or something).
- */
-/*@page {
-    @bottom-center {
-    content: "hello";
+@media print {
+    .page {
+        height: 7.5in; /* 740 pt */
+        width: 5in;    /* 360 pt */
+        /* Actual planner seems to be 45 (5/8in) on top and bottom,
+         * but that somehow seemed like to much.
+         */
+        padding-top: 42pt;
+        padding-bottom:32pt;
+        page-break-after: always;
+        position: relative;
+        /* Account for padding in size calculations. */
+        box-sizing: border-box;
+        /* For debugging layouts*/
+        /*border: 1px solid red;*/
     }
-}*/
-/*@page :footer {
-    content: "hello";
-}*/
+
+    .page.left-page {
+        padding-left: 10pt;
+        padding-right: 32pt;
+    }
+
+    .page.right-page {
+        padding-left: 32pt;
+        padding-right: 10pt;
+    }
+}

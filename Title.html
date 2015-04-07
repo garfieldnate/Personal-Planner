@@ -1,58 +1,9 @@
 <!doctype html>
-<head>
-<link rel="stylesheet" href="Page2.css">
-<style type="text/css">
-    body {
-        font-family: Futura, "Century Gothic", AppleGothic, sans-serif;
-    }
-    *:lang(ja) {
-      font-family:"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-    }
+<link rel="stylesheet" href="Page.css">
+<link rel="stylesheet" href="JPFont.css">
+<link rel="stylesheet" href="Title.css">
 
-    /** {
-        border: 3px solid red;
-    }*/
-
-    #title-year {
-        margin-top: 0pt;
-        text-align: right;
-        font-weight: bold;
-        font-style: italic;
-        /* Roaring Spring has text shadows for title and year,
-         * but that doesn't print with Chrome yet.*/
-        /*text-shadow: 2px 2px 2px rgba(150, 150, 150, 1);*/
-    }
-    #title-title {
-        text-align: center;
-    }
-    #title-toc ul {
-        font-size: 1.2em;
-        text-align: center;
-        padding: 0;
-        list-style-type: none;
-    }
-    #title-logo {
-        /* horizontal center (42pt is margin size) */
-        width: calc(100% - 42pt);
-        /* bottom of page; CSS has no way of considering padding in bottom placement, so you have to do manual placement */
-        position: absolute;
-        bottom: 32pt;
-    }
-    @media print {
-        .link {
-            font-family: "Courier New", Courier, monospace;
-            color: black;
-            text-decoration: none;
-        }
-        #title-logo {
-            /* Undo strange extra right margin caused by 'fixed' */
-            /*right: 0pt;*/
-        }
-    }
-</style>
-</head>
-<body>
-<div class="page right-page">
+<div class="page right-page title-page">
     <h1 id="title-year">2015</h1>
     <h1 id="title-year">2016</h1>
     <h2 id="title-title">Daily/Weekly Planner</h2>
@@ -64,6 +15,7 @@
         </ul>
     </div>
     <div id="belongs-to">
+        <!-- Phone number would be nice -->
         <p>This planner belongs to Nathan Glenn. If you find it, please contact me at nathan.g.glenn@<wbr>gmail.com.</p>
         <p lang="JA">このダイアリーが見つかりましたらご連絡願います：nathan.g.glenn@<wbr>gmail.com。</p>
     </div>
@@ -72,4 +24,3 @@
     </div>
     <img id="title-logo" src="MarioStar.svg" height="30px">
 </div>
-</body>

@@ -1,0 +1,14 @@
+.cover-page {
+    padding-top: 12pt;
+    padding-bottom: 0pt;
+    background-color: navy;
+    overflow: hidden;
+}
+.cover-align
+{
+    position: relative;
+    width: 10000pt;
+    left: 50%;
+    margin: 0 0 0 -5000pt;
+    text-align: center;
+}

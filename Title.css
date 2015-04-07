@@ -1,0 +1,40 @@
+.title-page {
+    font-family: Futura, "Century Gothic", AppleGothic, sans-serif;
+}
+
+#title-year {
+    margin-top: 0pt;
+    text-align: right;
+    font-weight: bold;
+    font-style: italic;
+    /* Roaring Spring has text shadows for title and year,
+     * but that doesn't print with Chrome yet.*/
+    /*text-shadow: 2px 2px 2px rgba(150, 150, 150, 1);*/
+}
+#title-title {
+    text-align: center;
+}
+#title-toc ul {
+    font-size: 1.2em;
+    text-align: center;
+    padding: 0;
+    list-style-type: none;
+}
+#title-logo {
+    /* horizontal center (42pt is margin size) */
+    width: calc(100% - 42pt);
+    /* bottom of page; CSS has no way of considering padding in bottom placement, so you have to do manual placement */
+    position: absolute;
+    bottom: 32pt;
+}
+@media print {
+    .link {
+        font-family: "Courier New", Courier, monospace;
+        color: black;
+        text-decoration: none;
+    }
+    #title-logo {
+        /* Undo strange extra right margin caused by 'fixed' */
+        /*right: 0pt;*/
+    }
+}

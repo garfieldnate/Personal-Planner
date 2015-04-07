@@ -1,7 +1,3 @@
-*:lang(ja) {
-  font-family:"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-}
-
 .week-header {
     font-family: Futura, "Century Gothic", AppleGothic, sans-serif;
     font-weight: bold;
@@ -52,7 +48,7 @@ div[data-week-day="MONDAY"], div[data-week-day="THURSDAY"] {
     height: 72pt;
 }
 /* Lines for writing on*/
-.lines {
+.entry-lines {
     /* Fill available space below header */
     display: block;
     position:absolute;
@@ -71,13 +67,13 @@ div[data-week-day="MONDAY"], div[data-week-day="THURSDAY"] {
 }
 
 /* Adjust background size so that there are 10 even lines */
-.weekday .lines {
+.weekday .entry-lines {
     background-size: 100% 12pt;
     background-position: 0% 8%;
 }
 
 /* Should have 4 even lines*/
-.weekend .lines {
+.weekend .entry-lines {
     background-size: 100% 12pt;
     background-position: 0% 20%;
 }

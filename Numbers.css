@@ -1,0 +1,81 @@
+/* Line the edge of the header up with the numbers table */
+.left-page .numbers-header {
+    text-align: left;
+    margin-left: 22pt;
+}
+.right-page .numbers-header {
+    text-align: right;
+    margin-right: 22pt;
+}
+.numbers-header {
+    font-family: 'Hoefler Text', Times New Roman, Times, serif;
+    font-weight: normal;
+    font-style: italic;
+    font-size: 13.5pt;
+    margin-top: 0px;
+}
+.numbers-page {
+    padding-top: 8pt;
+}
+
+.letters {
+    font-family: 'Hoefler Text', Times New Roman, Times, serif;
+    font-style: italic;
+    font-weight: normal;
+    width: 10pt;
+}
+
+.letters h3 {
+    margin-top: 6pt;
+    margin-bottom: 6pt;
+}
+
+.left-page .letters {
+    float: left;
+    margin-left: 6pt;
+}
+.right-page .letters {
+    float: right;
+    margin-right: 6pt;
+}
+
+/* Div container for the numbers table*/
+.numbers {
+    /* Fill available space below header */
+    height: calc(100% - 32pt);
+    /*width:100%;*/
+    top:37px;
+    bottom:0;
+}
+
+.left-page .numbers {
+    float: left;
+    margin-left: 12pt;
+}
+
+.right-page .numbers {
+    float: right;
+    margin-right: 12pt;
+}
+
+/* Split table with middle line*/
+.numbers table {
+    border-collapse: collapse;
+    empty-cells: show;
+    width: 290pt;
+    border-bottom: 1px solid black;
+}
+.numbers-table-header th {
+    font-weight: normal;
+    font-style: italic;
+    text-align: left;
+}
+
+.numbers-table-header th, tr {
+    border-bottom: 1px solid black;
+    font-size: 8pt;
+}
+
+.name-cell {
+    border-right: 1px solid black;
+}

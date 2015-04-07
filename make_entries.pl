@@ -268,10 +268,10 @@ my $holidays_calendar = Date::Calendar->new({
 
 my $out = path('Entries.html')->openw_utf8;
 say $out '<!doctype html>';
-say $out '<link rel="stylesheet" href="Page.css">';
+say $out '<link rel="stylesheet" href="CSS/Page.css">';
 # Specify Japanese and then emoji fonts so emoji overrides Japanese
-say $out '<link rel="stylesheet" href="JPFont.css">';
-say $out '<link rel="stylesheet" href="Entries.css">';
+say $out '<link rel="stylesheet" href="CSS/JPFont.css">';
+say $out '<link rel="stylesheet" href="CSS/Entries.css">';
 my $writer = XML::Writer->new(
     OUTPUT => $out,
     DATA_MODE => 1,
@@ -375,7 +375,7 @@ sub write_day {
     $writer->startTag('div', class => 'entry-lines');
     $writer->emptyTag('img',
         class => 'goal-star',
-        src => "Star.svg"
+        src => "images/Star.svg"
     );
     $writer->endTag('div');
 

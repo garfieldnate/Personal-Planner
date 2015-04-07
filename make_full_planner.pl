@@ -7,13 +7,13 @@ my $out = path('FullPlanner.html')->openw_utf8();
 
 say $out <<'END';
 <!doctype html>
-<link rel="stylesheet" href="Page.css">
-<link rel="stylesheet" href="JPFont.css">
-<link rel="stylesheet" href="Cover.css">
-<link rel="stylesheet" href="Title.css">
-<link rel="stylesheet" href="Entries.css">
-<link rel="stylesheet" href="Notes.css">
-<link rel="stylesheet" href="Numbers.css">
+<link rel="stylesheet" href="CSS/Page.css">
+<link rel="stylesheet" href="CSS/JPFont.css">
+<link rel="stylesheet" href="CSS/Cover.css">
+<link rel="stylesheet" href="CSS/Title.css">
+<link rel="stylesheet" href="CSS/Entries.css">
+<link rel="stylesheet" href="CSS/Notes.css">
+<link rel="stylesheet" href="CSS/Numbers.css">
 END
 
 for my $file (qw(Cover Title Entries Notes Numbers Goals)){

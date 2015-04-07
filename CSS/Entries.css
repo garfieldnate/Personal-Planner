@@ -58,7 +58,7 @@ div[data-week-day="MONDAY"], div[data-week-day="THURSDAY"] {
     left:0;
     right:0;
 
-    background-image: url('Line.png');
+    background-image: url('../images/Line.png');
         /* Doesn't work in Chrome printing */
         /*linear-gradient(#000 .1em, transparent .1em);*/
         /* So Webkit user can't turn off the lines*/

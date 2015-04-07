@@ -18,7 +18,7 @@
 }
 
 .graph-notes {
-    background: url('Graph.png');
+    background: url('../images/Graph.png');
     background-size: 12pt;
 }
 
@@ -28,7 +28,7 @@
 }
 
 .line-notes {
-    background: url('Line.png');
+    background: url('../images/Line.png');
     background-size: 100% 1em;
 }
 

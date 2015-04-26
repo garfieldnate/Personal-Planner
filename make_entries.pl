@@ -1,7 +1,7 @@
 # Generate my favorite planner.
 # To generate planner entries between April 1st, 2015 and March 31, 2016:
 
-#     perl make_entries.pl 2015-4-1 2016-3-31
+#     perl -Ilib make_entries.pl 2015-4-1 2016-3-31
 
 # This will write the file `Entries.html`. You do not have to
 # specify both of the dates; the default start date is January

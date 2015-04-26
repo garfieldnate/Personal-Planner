@@ -18,11 +18,11 @@ I never used calendars, and I don't need to keep track of class schedules, so I 
 
 The planner is written in HTML/CSS with special print styles, intended to simply be printed via Google Chrome (I believe it's the only browser that works). The entries are generated using Perl and several calendar modules. To generate planner entries between April 1st, 2015 and March 31, 2016:
 
-    perl make_entries.pl 2015-4-1 2016-3-31
+    perl -Ilib make_entries.pl 2015-4-1 2016-3-31
 
 This will write the file `Entries.html`. You do not have to specify both of the dates; the default start date is January 1st of the current year, and the default end date is December 31st of the start year.
 
-Next, you should run `make_full_planner.pl` to combine all of the sections into one document, `FullPlannerContents.html`. Lastly, you should edit the years in `BackCover.html`. 
+Next, you should run `perl make_full_planner.pl` to combine all of the sections into one document, `FullPlannerContents.html`. Lastly, you should edit the years in `BackCover.html`. 
 
 After that, you just need to print these files to PDF via Chrome and then take the files to a printer:
 

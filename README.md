@@ -16,7 +16,13 @@ I never used calendars, and I don't need to keep track of class schedules, so I 
 
 ## Building
 
-The planner is written in HTML/CSS with special print styles, intended to simply be printed via Google Chrome (I believe it's the only browser that works). The entries are generated using Perl and several calendar modules. To generate planner entries between April 1st, 2015 and March 31, 2016:
+The planner is written in HTML/CSS with special print styles, intended to simply be printed via Google Chrome (I believe it's the only browser that works). The entries are generated using Perl and several calendar modules. 
+
+To install dependencies:
+
+    cpanm --install-deps .
+
+To generate planner entries between April 1st, 2015 and March 31, 2016:
 
     perl -Ilib make_entries.pl 2015-4-1 2016-3-31
 

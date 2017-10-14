@@ -22,7 +22,7 @@ body {
         height: 7.5in; /* 740 pt */
         width: 5in;    /* 360 pt */
         /* Actual planner seems to be 45 (5/8in) on top and bottom,
-         * but that somehow seemed like to much.
+         * but that somehow seemed like too much.
          */
         padding-top: 42pt;
         padding-bottom:32pt;
@@ -30,10 +30,13 @@ body {
         position: relative;
         /* Account for padding in size calculations. */
         box-sizing: border-box;
-        /* For debugging layouts*/
-        /*border: 1px solid red;*/
+
+        /* Crop marks for cutting pages (not a chance you're printing on actual 7.5" x 5" paper!) */
+        border: 1px dotted #E8E8E8;
+        border-style: dotted;
     }
 
+    /* Manual margins for left and right pages */
     .page.left-page {
         padding-left: 10pt;
         padding-right: 32pt;
@@ -42,5 +45,27 @@ body {
     .page.right-page {
         padding-left: 32pt;
         padding-right: 10pt;
+    }
+
+    /* Dotted lines in corner to indicate that it should be cut/ripped off. */
+    .corner {
+        width: 50px;
+        position: absolute;
+        top: 16px;
+        border: 1px dotted #E8E8E8;
+        border-style: none none dotted;
+    }
+
+    .right-page .corner {
+        right: -8px;
+        left: auto;
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+    }
+
+    .left-page .corner {
+        left: -8px;
+        transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
     }
 }

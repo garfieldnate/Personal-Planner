@@ -123,6 +123,8 @@ sub term_planner {
     for(qw(left right)){
         $writer->startTag('div',
             class => 'page ' . $_ . '-page notes-page');
+        $writer->startTag('div', class => 'corner');
+        $writer->endTag('div');
         $writer->startTag('h1', class => 'notes-header');
         $writer->characters('Term Goals');
         $writer->endTag('h1');
@@ -146,6 +148,8 @@ sub start_week {
 
     # first page contains Monday -- Wednesday
     $writer->startTag('div', class => 'page left-page');
+    $writer->startTag('div', class => 'corner');
+    $writer->endTag('div');
 
     $writer->startTag('div', class => 'week-header-container');
     $writer->startTag('h3', class => 'week-header');
@@ -161,6 +165,8 @@ sub write_day {
     # second page contains Thursday -- Sunday
     if($day_of_week == 4){
         $writer->startTag('div', class => "page right-page");
+        $writer->startTag('div', class => 'corner');
+        $writer->endTag('div');
     }
     $writer->startTag('div',
         class => 'day ' . ($day_of_week < 6 ? 'weekday' : 'weekend'),

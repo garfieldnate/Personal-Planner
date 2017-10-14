@@ -1,6 +1,6 @@
 # Personal Planner
 
-This planner is a remake of my favorite planner purchased from the BYU bookstore as a student: an academic year planner by 7.5 x 5 inch weekly/daily planner from Roaring Spring Paper Products. Features include:
+This planner is a remake of my favorite planner purchased from the BYU bookstore as a student: a 7.5 x 5 inch weekly/daily academic planner from Roaring Spring Paper Products. I used to buy one every year and have the covers laminated. Features include:
 
 * Daily planning entries with 1 week visible at a time
 * 5-week term planning pages
@@ -14,7 +14,7 @@ This planner is a remake of my favorite planner purchased from the BYU bookstore
 
 I never used calendars, and I don't need to keep track of class schedules, so I didn't bother adding those pages.
 
-##Building
+## Building
 
 The planner is written in HTML/CSS with special print styles, intended to simply be printed via Google Chrome (I believe it's the only browser that works). The entries are generated using Perl and several calendar modules. To generate planner entries between April 1st, 2015 and March 31, 2016:
 
@@ -36,6 +36,7 @@ Copyright Nathan Glenn, released under the [MIT license](http://choosealicense.c
 
 ## TODO
 * Some content lines not showing up
+* Corner crop marks to suggest cutting or tearing for easily keeping track of the current date.
 * Create standard page size, adding crop marks for easy cutting (FedEx Office couldn't cut it without those!)
 * Investigate printing of small text and light gray text
     - Initial printing at FedEx Office and Office Max both stunk at these

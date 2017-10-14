@@ -18,9 +18,9 @@
 }
 
 .emoji {
-    /* Symbola font available at http://users.teilar.gr/~g1951d/ */
-    /* Style taken from emojibase.com */
-    font-family: "Apple Color Emoji","Segoe UI Emoji","NotoColorEmoji","Segoe UI Symbol","Android Emoji","EmojiSymbols", "Symbola";
+    /* Use a crisp black and white emoji font.
+    Segoe UI Emoji font available here: https://www.wfonts.com/font/segoe-ui-emoji. */
+    font-family: "Segoe UI Emoji";
 }
 
 .day-header {

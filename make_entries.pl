@@ -128,7 +128,7 @@ sub term_planner {
         $writer->startTag('div', class => 'notes-header');
         $writer->characters('Term Goals');
         $writer->endTag('div');
-        if($_ eq 'right') {
+        if($_ eq 'left') {
             $writer->startTag('div', class => 'notes line-notes');
             $writer->endTag('div');
         }

@@ -34,6 +34,9 @@ body {
         /* Crop marks for cutting pages (not a chance you're printing on actual 7.5" x 5" paper!) */
         border: 1px dotted #E8E8E8;
         border-style: dotted;
+
+        /* Just in case something goes wrong on one page, prevent it from ruining the next */
+        overflow: hidden;
     }
 
     /* Manual margins for left and right pages */

@@ -60,6 +60,7 @@ Copyright Nathan Glenn, released under the [MIT license](http://choosealicense.c
 * 2 month calendar in page corners (original has this; do I need it?)
 * Investigate printing of small text and light gray text
     - Initial printing at FedEx Office and Office Max both stunk at these
+* Make full planner generation into one single command
 * Report various bugs found during the making of this project
     - patch Japanese Holiday module to get rid of warnings;
     - file request for Calendar::China to allow gregorian year with Chinese month/day

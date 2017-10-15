@@ -98,21 +98,23 @@ while($date->day_of_week != 1){
 }
 
 $writer->startTag('div', class => 'entries');
-my $week_counter = 0;
-my $term_length = 5;
 # print by the week until we have surpassed the end date;
-# print a term planning page every 5 weeks
+# print a planning page for each month
+my $current_month = '';
 while ( $date < $end ) {
-    term_planner($writer, $date) if $week_counter % $term_length == 0;
-    $week_counter++;
+    # print planning pages if applicable
+    my $last_day = $date + 6;
+    if($last_day->month ne $current_month) {
+        term_planner($writer, $last_day);
+    }
+    $current_month = $last_day->month;
+    # print week
     start_week($writer, $date);
     for(1..7){
         write_day($writer, $date, $_);
         $date++;
-        # last;
     }
     end_week($writer);
-    # last;
 }
 $writer->endTag('div'); # entries
 $writer->end(); # end the entire document
@@ -120,13 +122,14 @@ $writer->end(); # end the entire document
 # for now, this is just two blank pages with a header. Maybe
 # next year I'll have some ideas on content or formatting.
 sub term_planner {
+    my ($writer, $date) = @_;
     for(qw(left right)){
         $writer->startTag('div',
             class => 'page ' . $_ . '-page notes-page');
         $writer->startTag('div', class => 'corner');
         $writer->endTag('div');
         $writer->startTag('div', class => 'notes-header');
-        $writer->characters('Term Goals');
+        $writer->characters($months[$date->month - 1] . ' Notes');
         $writer->endTag('div');
         if($_ eq 'left') {
             $writer->startTag('div', class => 'notes line-notes');
@@ -134,7 +137,6 @@ sub term_planner {
         }
         $writer->endTag('div');
     }
-
     return;
 }
 

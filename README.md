@@ -3,7 +3,7 @@
 This planner is a remake of my favorite planner purchased from the BYU bookstore as a student: a 7.5 x 5 inch weekly/daily academic planner from Roaring Spring Paper Products. I used to buy one every year and have the covers laminated. Features include:
 
 * Daily planning entries with 1 week visible at a time
-* 5-week term planning pages
+* Monthly planning pages
 * Entries section can be regenerated for any time span
 * American/Japanese holidays and family birthdays marked, sometimes with emoji!
 * Lines for writing daily plans
@@ -52,14 +52,14 @@ Be sure to check the "Background Graphics" box in the print dialog; lined sectio
 Copyright Nathan Glenn, released under the [MIT license](http://choosealicense.com/licenses/apache-2.0/).
 
 ## TODO
-* Term goals should be once a month, not every five weeks.
-* Add a notes section in the back
+* German Holidays
 * ? Add entry footers
-    - fire flower, Yoshi egg, mushroom, koopa, triforce...
+    - fire flower, Yoshi egg, mushroom, koopa, triforce, one true ring, types of knots or tesselations...
 * Determine exactly how best to print (how many pages per paper in what orientation, etc.)
     - Actually print it!
     - Record estimated cost
     - find good way to make a cover; maybe just get blue/orange plastic and trace pictures on there.
+* Calendar entries for general conference would be nice
 * 2 month calendar in page corners (original has this; do I need it?)
 * Investigate printing of small text and light gray text
     - Initial printing at FedEx Office and Office Max both stunk at these

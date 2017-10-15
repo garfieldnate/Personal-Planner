@@ -52,9 +52,6 @@ Be sure to check the "Background Graphics" box in the print dialog; lined sectio
 Copyright Nathan Glenn, released under the [MIT license](http://choosealicense.com/licenses/apache-2.0/).
 
 ## TODO
-* German Holidays
-* ? Add entry footers
-    - fire flower, Yoshi egg, mushroom, koopa, triforce, one true ring, types of knots or tesselations...
 * Determine exactly how best to print (how many pages per paper in what orientation, etc.)
     - Actually print it!
     - Record estimated cost

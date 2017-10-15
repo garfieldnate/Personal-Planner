@@ -135,6 +135,45 @@ sub _init_holiday_info {
             date    => 'Dec31',
             lang    => 'JA'
         },
+
+        # German holidays (for NRW)
+        'Karfreitag' => {
+            date    => '-2',
+            lang    => 'DE'
+        },
+        'Ostermontag' => {
+            date    => '+1',
+            lang    => 'DE'
+        },
+        'Christi Himmelfahrt' => {
+            date    => '+39',
+            lang    => 'DE'
+        },
+        'Pfingstmontag' => {
+            date    => '+50',
+            lang    => 'DE'
+        },
+        'Fronleichnam' => {
+            date    => '+60',
+            lang    => 'DE'
+        },
+        'Tag der Arbeit' => {
+            date    => 'May1',
+            lang    => 'DE'
+        },
+        'Tag der Deutschen Einheit' => {
+            date    => 'Oct3',
+            lang    => 'DE',
+        },
+        'Allerheiligen' => {
+            date    => 'Nov1',
+            lang    => 'DE'
+        },
+        'Zweiter Weihnachtsfeiertag' => {
+            date    => 'Dec26',
+            lang    => 'DE'
+        },
+
         # LDS events and holidays
         'Pioneer Day' => {
             date    => 'Jul24',

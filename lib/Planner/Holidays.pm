@@ -22,12 +22,11 @@ sub _init_holiday_info {
     # TODO: For now, Unicode doesn't support country flags
     # (and neither does Symbola).
     my %holiday_info = (
-        # New Years is handled by Japanese holidays
+        # American holidays (New Years is handled by Japanese holidays)
         'MLK Day' => {
             date => '3/Mon/Jan'
             # TODO: an MLK emoji would be nice...
         },
-
         'Groundhog Day' => {
             date => 'Feb2'
             # TODO: no groundhog emoji...
@@ -40,24 +39,12 @@ sub _init_holiday_info {
             date    => '3/Mon/Feb',
             # emoji   => "\x{1F1FA}\x{1F1F8}" # US flag
         },
-
-        "雛祭り" => {
-            date    => 'Mar3', # but it differs by a bit by area
-            emoji   => "\x{1F38E}", # Japanese dolls
-            lang    => "JA"
-        },
-        'White Day' => {
-            date    => 'Mar14',
-            emoji   => "\x{2661}" # white heart
-        },
         'St. Patrick\'s Day' => {
             date    => 'Mar17',
             emoji   => "\x{2618}" #shamrock. four-leaf clover (1F340) also available
         },
-
         'April Fool\'s Day' => {date => 'Apr1'},
         'Easter'            => {date => '+0'}, # TODO: emoji Church, chick...
-
         'Mother\'s Day' => {
             date    => '2/Sun/May',
             # emoji   => "\x{1F395}" # TODO: boquet not availabe until Unicode 7 (and Symbola is ugly)
@@ -70,37 +57,14 @@ sub _init_holiday_info {
             date    => 'May25',
             emoji   => "\x{1F48D}" # ring
         },
-
         'Flag Day' => {
             date    => 'Jun14',
             # emoji   => "\x{1F1FA}\x{1F1F8}" # US flag
         },
         'Father\'s Day' => {date => '3/Sun/Jun'},
-
         'Independence Day' => {
             date    => 'Jul4',
             # emoji   => "\x{1F1FA}\x{1F1F8}" # US flag
-        },
-        '七夕' => {
-            date    => 'Jul7',
-            emoji   => "\x{1F38B}", # tanabata bamboo decoration
-            lang    => 'JA'
-        },
-        'Pioneer Day' => {
-            date    => 'Jul24',
-            # emoji => "\x{1f402}" # ox TODO: I want a covered wagon.
-        },
-        # the main Summer festival in Osaka
-        '天神祭' => {
-            date    => 'Jul25',
-            emoji   => "\x{1F387}", # sparkler; sky firework also available (1F386)
-            lang    => 'JA'
-        },
-
-        'お盆' => {
-            date    => 'Aug15',
-            emoji   => "\x{1F3EE}", #Izakaya lantern
-            lang    => "JA"
         },
         'Labor Day' => {
             date    => '1/Mon/Sep',
@@ -114,7 +78,6 @@ sub _init_holiday_info {
             date    => 'Sep28',
             emoji   => "\x{1F382}" # birthday cake
         },
-
         'Columbus Day' => {
             date => '2/Mon/Oct',
             # emoji  TODO: I want an old ship. Palm (1F334) doesn't cut it.
@@ -123,7 +86,6 @@ sub _init_holiday_info {
             date    => 'Oct31',
             emoji   => "\x{1F383}", # jack-o-lantern
         },
-
         'Veterans Day' => {
             date => 'Nov11',
             # emoji   => "\x{1F1FA}\x{1F1F8}" # US flag
@@ -132,7 +94,6 @@ sub _init_holiday_info {
             date    => '4/Thu/Nov',
             emoji   => "\x{1F357}" # foul leg. TODO: Turkey in future Unicode (x704)
         },
-
         'Pearl Harbor Day' => {
             date    => 'Dec7',
             # emoji   => "\x{1F1FA}\x{1F1F8}" # US flag
@@ -149,10 +110,36 @@ sub _init_holiday_info {
             date    => 'Dec31',
             emoji   => "\x{1F38A}", # party popper
         },
+
+        # Japanese Holidays
+        "雛祭り" => {
+            date    => 'Mar3', # but it differs by a bit by area
+            emoji   => "\x{1F38E}", # Japanese dolls
+            lang    => "JA"
+        },
+        'White Day' => {
+            date    => 'Mar14',
+            emoji   => "\x{2661}" # white heart
+        },
+        '七夕' => {
+            date    => 'Jul7',
+            emoji   => "\x{1F38B}", # tanabata bamboo decoration
+            lang    => 'JA'
+        },
+        'お盆' => {
+            date    => 'Aug15',
+            emoji   => "\x{1F3EE}", #Izakaya lantern
+            lang    => "JA"
+        },
         '大晦日' => {
             date    => 'Dec31',
             lang    => 'JA'
-        }
+        },
+        # LDS events and holidays
+        'Pioneer Day' => {
+            date    => 'Jul24',
+            # emoji => "\x{1f402}" # ox TODO: I want a covered wagon.
+        },
     );
     # Add birthdays, which have common characteristics
     {

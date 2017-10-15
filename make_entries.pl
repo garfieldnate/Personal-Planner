@@ -125,11 +125,13 @@ sub term_planner {
             class => 'page ' . $_ . '-page notes-page');
         $writer->startTag('div', class => 'corner');
         $writer->endTag('div');
-        $writer->startTag('h1', class => 'notes-header');
+        $writer->startTag('div', class => 'notes-header');
         $writer->characters('Term Goals');
-        $writer->endTag('h1');
-        $writer->startTag('div', class => 'notes plan-notes');
         $writer->endTag('div');
+        if($_ eq 'right') {
+            $writer->startTag('div', class => 'notes line-notes');
+            $writer->endTag('div');
+        }
         $writer->endTag('div');
     }
 

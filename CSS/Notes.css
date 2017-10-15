@@ -4,17 +4,22 @@
 }
 
 .notes-header {
-    font-family: 'Hoefler Text', Times New Roman, Times, serif;
+    font-family: Futura, "Century Gothic", AppleGothic, sans-serif;
     font-weight: normal;
-    font-style: italic;
     margin-top: 0px;
     font-size: 13.5pt;
 }
+
+/* Headers need space to be clear of the corner crop mark */
 .left-page .notes-header {
     text-align: left;
+    left: 30px;
+    position: relative;
 }
 .right-page .notes-header {
     text-align: right;
+    right: 30px;
+    position: relative;
 }
 
 .graph-notes {
@@ -34,8 +39,14 @@
 .line-notes {
     background: url('../images/Line.png');
     background-size: 100% 1em;
+    display: block;
+    position:absolute;
+    height:auto;
+    bottom:0;
+    top:20px; /* A little more than line height */
+    left:0;
+    right:0;
 }
-
 
 .notes {
     /* Fill available space below header */

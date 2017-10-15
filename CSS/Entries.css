@@ -47,6 +47,7 @@ div[data-week-day="MONDAY"], div[data-week-day="THURSDAY"] {
 .weekend {
     height: 72pt;
 }
+
 /* Lines for writing on*/
 .entry-lines {
     /* Fill available space below header */
